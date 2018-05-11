@@ -2,6 +2,8 @@ require("./bootstrap");
 import auth from "./plugin/auth";
 auth.initialize()
 window.Vue = require("vue");
+import {Loading} from 'element-ui';
+
 import Vuetify from 'vuetify'
 import VueRouter from "vue-router";
 import App from "./views/Layout.vue";
@@ -39,7 +41,7 @@ let routes = [
     }
 ];
 const router = new VueRouter({ routes });
-
+Vue.use(Loading.directive);
 router.beforeEach((a, b, c) => {
     document.title = a.meta.title
     a.matched.some(d => !1 == d.meta.requiresAuth)
@@ -60,6 +62,7 @@ new Vue({
     },
     data() {
         return {
+            fullscreenLoading: false,
             authenticated: auth.check(),
             user_id: auth.state.user_id,
             user: auth.state.user,
@@ -75,7 +78,7 @@ new Vue({
     mounted() {
 
         EventBus.$on("userLoggedIn", () => {
-            (this.$router.push({name: 'dashboard'})), (this.loading = false), (this.authenticated = auth.check()), (this.user_id =  auth.state.user_id) ,(this.user = auth.state.user);
+            (this.$router.push({name: 'dashboard'})), (this.fullscreenLoading = false), (this.authenticated = auth.check()), (this.user_id =  auth.state.user_id) ,(this.user = auth.state.user);
         });
     },
     router,

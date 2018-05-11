@@ -8,16 +8,19 @@
                 Department:
             </v-flex>
         </v-layout>
-        <v-layout row justify-center>
+        <v-layout row>
             <v-flex xs4>
-                <v-card>
+                <v-card >
                     <v-card-title primary-title>
-                        <div>
-                            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-                            <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
-                        </div>
+                        <div class="headline">Quick Links</div>
+                        <br>
+                        <v-card-text>
+                            <v-icon>history</v-icon> Login History
+                            <br>
+                            <v-icon>description</v-icon> View Document
+                        </v-card-text>
                     </v-card-title>
-                    <v-card-text>one</v-card-text>
+
                 </v-card>
             </v-flex>
         </v-layout>
@@ -25,7 +28,7 @@
 </template>
 <script>
     export default{
-        computed:{
+        computed: {
             user(){
                 return this.$root.$data.user
             }

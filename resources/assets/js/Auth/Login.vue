@@ -28,7 +28,7 @@
             login() {
                 var a = {email: this.email, password: this.password};
                 var vm = this;
-                vm.$root.$data.loading = true
+                vm.$root.$data.fullscreenLoading = true
                 axios
                     .post("/api/login", a)
                     .then(function (_ref) {

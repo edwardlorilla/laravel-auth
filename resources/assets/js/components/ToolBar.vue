@@ -43,7 +43,7 @@
     methods: {
         logout() {
             var vm = this
-            vm.$root.$data.loading = true
+            vm.$root.$data.fullscreenLoading = true
             vm.$root.$data.drawer = false
             post('/api/logout').then((res) => {
                 Auth.remove()

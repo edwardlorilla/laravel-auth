@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "element-ui": "^2.3.8",
         "material-design-icons-iconfont": "^3.0.3",
         "noty": "^3.2.0-beta",
         "vue-router": "^3.0.1",

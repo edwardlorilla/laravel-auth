@@ -17,10 +17,13 @@
                                        target="_blank">
                                     <v-icon large>input</v-icon>
                                 </v-btn>
-                                <span>{{currentTab === 'Login' ? 'Login' : 'Add Employee' }}</span>
+                                <span>{{currentTab === 'Login' ? 'Add Employee' : 'Login' }}</span>
                             </v-tooltip>
                         </v-toolbar>
-                        <component v-bind:is="currentTab"></component>
+                        <no-mode>
+                            <component v-bind:is="currentTab"></component>
+                        </no-mode>
+
                     </v-card>
                 </v-flex>
             </v-layout>
@@ -31,10 +34,12 @@
 <script>
     import Login from "./../Auth/Login.vue";
     import Register from "./../Auth/Register.vue";
+    import NoMode from "./../Transition/no-mode.vue";
     export default {
         components:{
             Login,
-            Register
+            Register,
+            NoMode
         },
         data(){
             return{

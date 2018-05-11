@@ -1,23 +1,23 @@
 <template>
-    <v-app :class="$root.$data.loading ? 'overlay overlay--active' : ''" id="inspire">
-       <div id="text" v-if="$root.$data.loading">
-           <v-progress-circular indeterminate color="primary"></v-progress-circular>
-       </div>
+    <v-app v-loading.fullscreen.lock="$root.$data.fullscreenLoading" id="inspire">
         <v-navigation-drawer
                 v-if="$root.isAuth"
                 :clipped="$vuetify.breakpoint.lgAndUp"
                 fixed
                 v-model="$root.$data.drawer"
                 app
+
         >
             <nav-item></nav-item>
         </v-navigation-drawer>
-       <tool-bar></tool-bar>
+        <tool-bar></tool-bar>
         <v-content>
-            <v-container fluid fill-height>
+            <v-container grid-list-lg fluid fill-height>
                 <v-layout>
                     <v-flex>
-                        <router-view/>
+                        <no-mode>
+                            <router-view/>
+                        </no-mode>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -29,10 +29,12 @@
 </template>
 <script>
     import NavItem from './../components/NavigationDrawer.vue'
+    import NoMode from './../Transition/no-mode.vue'
     import ToolBar from './../components/ToolBar.vue'
     export default {
-        components:{
+        components: {
             NavItem,
+            NoMode,
             ToolBar
         },
         computed: {
