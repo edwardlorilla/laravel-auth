@@ -1,0 +1,25 @@
+// main.styl
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/relax.scss";
+@import '~vuetify/dist/vuetify.min.css';
+@import '~material-design-icons-iconfont/dist/material-design-icons.scss';
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
