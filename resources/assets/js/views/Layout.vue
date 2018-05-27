@@ -1,31 +1,35 @@
 <template>
-    <v-app v-loading.fullscreen.lock="$root.$data.fullscreenLoading" id="inspire">
-        <v-navigation-drawer
-                v-if="$root.isAuth"
-                :clipped="$vuetify.breakpoint.lgAndUp"
-                fixed
-                v-model="$root.$data.drawer"
-                app
+    <div v-loading.fullscreen.lock="$root.$data.fullscreenLoading">
+        <v-app v-if="!$root.$data.fullscreenLoading" id="inspire">
+            <v-navigation-drawer
+                    v-if="$root.isAuth"
+                    :clipped="$vuetify.breakpoint.lgAndUp"
+                    fixed
+                    v-model="$root.$data.drawer"
+                    app
 
-        >
-            <nav-item></nav-item>
-        </v-navigation-drawer>
-        <tool-bar></tool-bar>
-        <v-content>
-            <v-container grid-list-lg fluid fill-height>
-                <v-layout>
-                    <v-flex>
-                        <no-mode>
-                            <router-view/>
-                        </no-mode>
-                    </v-flex>
-                </v-layout>
-            </v-container>
-        </v-content>
-        <v-footer v-if="$root.isAuth" color="indigo" app inset>
-            <span class="white--text">    &copy; {{getFullYear}}</span>
-        </v-footer>
-    </v-app>
+            >
+                <nav-item></nav-item>
+            </v-navigation-drawer>
+            <tool-bar></tool-bar>
+            <v-content>
+                <v-container fluid
+                             style="min-height: 0;"
+                             grid-list-lg>
+                    <v-layout row wrap>
+
+                        <v-flex xs12>
+                            <no-mode>
+                                <router-view/>
+                            </no-mode>
+
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+
 </template>
 <script>
     import NavItem from './../components/NavigationDrawer.vue'
@@ -35,7 +39,7 @@
         components: {
             NavItem,
             NoMode,
-            ToolBar
+            ToolBar,
         },
         computed: {
             getFullYear(){

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
@@ -30,12 +30,17 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
     public function login(Request $request)
     {
+
+
+
         $this->validateLogin($request);
         if ($this->attemptLogin($request)) {
             $user = $this->guard()->user();
             $user->generateToken();
-            return response()->json($user->toArray());
+            activity()->causedBy($user)->log('Login Sucessfully');
+            return response()->json(\App\User::where('id', $user->id)->with('photo')->first());
         }
+        activity()->log( 'Someone tried to log into ' . $request->email);
         return $this->sendFailedLoginResponse($request);
     }
 

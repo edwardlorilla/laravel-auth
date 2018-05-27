@@ -2,3 +2,15 @@
 [0510/172922.629:ERROR:process_info.cc(359)] UncheckedAllocate
 [0510/234536.462:ERROR:process_info.cc(359)] UncheckedAllocate
 [0510/234536.462:ERROR:process_info.cc(359)] UncheckedAllocate
+[0512/223914.109:ERROR:process_info.cc(359)] UncheckedAllocate
+[0513/231313.468:ERROR:process_info.cc(359)] UncheckedAllocate
+[0513/232006.838:ERROR:process_info.cc(359)] UncheckedAllocate
+[0513/234023.020:ERROR:process_info.cc(359)] UncheckedAllocate
+[0513/234217.349:ERROR:process_info.cc(359)] UncheckedAllocate
+[0514/024729.582:ERROR:process_info.cc(359)] UncheckedAllocate
+[0514/025634.712:ERROR:process_info.cc(359)] UncheckedAllocate
+[0514/032428.627:ERROR:process_info.cc(359)] UncheckedAllocate
+[0514/032428.627:ERROR:process_info.cc(359)] UncheckedAllocate
+[0514/035501.880:ERROR:file_io.cc(89)] ReadExactly: expected 40, observed 0
+[0514/035501.880:ERROR:exception_handler_server.cc(526)] ConnectNamedPipe: The pipe is being closed. (0xE8)
+[0514/035501.896:ERROR:exception_handler_server.cc(526)] ConnectNamedPipe: The pipe is being closed. (0xE8)

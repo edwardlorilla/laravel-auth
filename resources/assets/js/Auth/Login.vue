@@ -2,17 +2,17 @@
     <form @submit.prevent="login">
         <v-card-text>
 
-            <v-text-field :disabled="$root.$data.loading" required v-model="email" prepend-icon="person" name="login" label="Login"
+            <v-text-field :disabled="$root.$data.fullscreenLoading" required v-model="email" prepend-icon="person" name="login" label="Login"
                           type="email"></v-text-field>
-            <v-text-field :disabled="$root.$data.loading" required v-model="password" id="password" prepend-icon="lock" name="password"
+            <v-text-field :disabled="$root.$data.fullscreenLoading" required v-model="password" id="password" prepend-icon="lock" name="password"
                           label="Password"
                           type="password"></v-text-field>
 
         </v-card-text>
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn type="submit" v-if="!$root.$data.loading" color="primary">Login</v-btn>
-            <v-progress-circular v-else  indeterminate color="primary"></v-progress-circular>
+            <v-btn @click.prevent="$router.push({path: '/forgot-password'})">Forgot Password?</v-btn>
+            <v-btn type="submit" :disabled="$root.$data.fullscreenLoading" color="primary">Login</v-btn>
         </v-card-actions>
     </form>
 </template>
@@ -33,26 +33,11 @@
                     .post("/api/login", a)
                     .then(function (_ref) {
                         Auth.set(_ref.data.api_token, _ref.data.id, _ref.data)
+                        vm.$router.push({name: 'dashboard'})
                     })
                     .catch(function (_ref2) {
-                        if (_ref2.response) {
-                            _.forEach(_ref2.response.data, function (value, key) {
-                                if (_.isObject(value)) {
-                                    _.forEach(value, function (error, key) {
-                                        if (_.isArray(error)) {
-                                            _.forEach(error, function (err, key) {
-                                                Flash(err, 'warning')
-                                            })
-                                        } else {
-                                            Flash(error, 'warning')
-                                        }
-                                    });
-                                } else {
-                                    Flash(value, 'warning')
-                                }
-                            });
-                        }
-                        vm.$root.$data.loading = false
+                        vm.$root.$data.fullscreenLoading = false
+                        vm.$root.errorResponse(_ref2)
                     });
             }
         }
